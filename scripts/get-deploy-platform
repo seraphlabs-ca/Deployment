@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+script_path=${0:A:h}
+
+if [ $# -lt 1 ]; then
+    echo "${0:A:t} <deploy script>"
+    exit -1
+fi
+
+
+platform_path=${1:A:h}
+
+echo ${platform_path:t}
