@@ -1,0 +1,59 @@
+#!/usr/bin/env zsh
+
+script_path=${0:A:h}
+
+source_dir=${RESEARCH_ROOT}/packages/google/protobuf
+target_dir=${RESEARCH_ROOT}/local
+
+echo "\n\nDeploying protobuf"
+
+# Protobuf
+sudo apt-get install \
+      curl \
+      autoconf \
+      automake \
+      libtool \
+      make \
+      unzip \
+      python-setuptools \
+      python-dev \
+      build-essential
+
+
+
+echo "\n\nCloning protobuf to ${source_dir}"
+
+mkdir -p ${source_dir:h}
+pushd ${source_dir:h}
+
+rm -R ${source_dir}
+
+git clone --recursive  https://github.com/google/protobuf.git
+cd protobuf
+
+
+echo "\n\nInstalling protobuf to ${target_dir}"
+
+# Follow instructions in src/README.md
+# To install locally use (without root permissions)
+./autogen.sh
+./configure --prefix=${target_dir}
+make
+make install
+
+
+# Install Protobuf Python
+cd ${target_dir}/python
+# To install python support follow instructions in README.md
+# To install locally use (without root permissions)
+mkdir -p ${RESEARCH_ROOT}/local/lib/python2.7/site-packages/
+python setup.py install --prefix=${target_dir}
+
+
+popd
+
+
+
+
+
+
