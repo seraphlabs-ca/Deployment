@@ -8,17 +8,13 @@ target_dir=${RESEARCH_ROOT}/local
 echo "\n\nDeploying protobuf"
 
 # Protobuf
-sudo apt-get install \
+sudo port install \
       curl \
       autoconf \
       automake \
       libtool \
-      make \
       unzip \
-      python-setuptools \
-      python-dev \
-      build-essential
-
+      py27-setuptools
 
 
 echo "\n\nCloning protobuf to ${source_dir}"
@@ -47,7 +43,6 @@ cd ${source_dir}/python
 mkdir -p ${RESEARCH_ROOT}/local/lib/python2.7/site-packages/
 python setup.py install --prefix=${target_dir}
 
-sudo ldconfig
 
 popd
 
