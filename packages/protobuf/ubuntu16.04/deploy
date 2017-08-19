@@ -38,7 +38,7 @@ echo "\n\nInstalling protobuf to ${target_dir}"
 # To install locally use (without root permissions)
 ./autogen.sh
 ./configure --prefix=${target_dir}
-make -j 8
+make -j8
 make install
 
 
