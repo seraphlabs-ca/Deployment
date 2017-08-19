@@ -43,7 +43,7 @@ make install
 
 
 # Install Protobuf Python
-cd ${target_dir}/python
+cd ${source_dir}/python
 # To install python support follow instructions in README.md
 # To install locally use (without root permissions)
 mkdir -p ${RESEARCH_ROOT}/local/lib/python2.7/site-packages/
