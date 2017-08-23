@@ -1,3 +1,41 @@
 #!/usr/bin/env zsh
 
 script_path=${0:A:h}
+
+caffe_name="caffe-with-opencv"
+
+echo "\n\nDeploying caffe: ${caffe_name}"
+
+pushd
+
+# install dependencies
+sudo apt-get install \
+      libleveldb-dev \
+      libsnappy-dev \
+      libhdf5-serial-dev
+sudo apt-get install --no-install-recommends \
+      libboost-all-dev
+
+
+# clone repositories
+mkdir -p ${RESEARCH_ROOT}/packages/cnn
+cd ${RESEARCH_ROOT}/packages/cnn
+
+git clone --recursive https://github.com/BVLC/caffe.git
+cd caffe
+
+# copy config file
+cp ${script_path}/Makefile.config ./
+
+# build caffe
+make clean
+make dist -j4
+
+# install locally
+mkdir -p ${RESEARCH_ROOT}/packages/dist/
+rm -Rf ${RESEARCH_ROOT}/packages/dist/${caffe_name}
+mv distribute ${RESEARCH_ROOT}/packages/dist/${caffe_name}
+cd ${RESEARCH_ROOT}/packages/dist
+ln -f -n -s -v ${caffe_name} caffe-default
+
+popd
