@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+
+script_path=${0:A:h}
+
+
+nvidia_name="nvidia-375"
+
+echo "\n\nDeploying CUDA package ${nvidia_name}"
+
+sudo add-apt-repository -y ppa:graphics-drivers/ppa
+sudo apt-get update
+sudo apt-get install --assume-yes \
+    nvidia-375 \
+    nvidia-cuda-toolkit
+
+
+
+
+
+
