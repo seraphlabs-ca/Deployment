@@ -22,7 +22,7 @@ echo "\n\nCloning protobuf to ${source_dir}"
 mkdir -p ${source_dir:h}
 pushd ${source_dir:h}
 
-rm -R ${source_dir}
+sudo rm -R ${source_dir}
 
 git clone --recursive  https://github.com/google/protobuf.git
 cd protobuf
