@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+script_path=${0:A:h}
+
+
+cudnn_name="nvidia-375"
+
+echo "\n\nDeploying CUDNN ${cudnn_name}"
+
+pushd
+
+# get cudnn
+mkdir -p ${RESEARCH_ROOT}/packages/cnn/cudnn
+cd ${RESEARCH_ROOT}/packages/cnn/cudnn
+s3cmd get s3://seraphlabs-data/packages/cnn/cudnn/cudnn-7.5-linux-x64-v6.0.tgz
+tar xvf cudnn-7.5-linux-x64-v6.0.tgz
+sudo mv cuda/lib64/* /usr/lib/nvidia-375/
+sudo mv cuda/include/* /usr/include/
+rm -Rf cuda
+
+popd
