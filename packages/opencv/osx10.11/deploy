@@ -1,0 +1,56 @@
+#!/usr/bin/env zsh
+
+script_path=${0:A:h}
+
+
+opencv_branch="3.2.0"
+
+echo "\n\nDeploying Open CV branch ${opencv_branch}"
+
+pushd
+
+# For OS X see ()[http://www.pyimagesearch.com/2015/06/15/install-opencv-3-0-and-python-2-7-on-osx/]
+
+# clone repositories
+mkdir -p ${RESEARCH_ROOT}/packages/opencv
+cd ${RESEARCH_ROOT}/packages/opencv
+git clone --recursive https://github.com/Itseez/opencv.git
+git clone --recursive https://github.com/Itseez/opencv_contrib
+
+# build opencv 3.2
+cd ${RESEARCH_ROOT}/packages/opencv/opencv_contrib
+git fetch --all
+git checkout 3.2.0
+
+cd ${RESEARCH_ROOT}/packages/opencv/opencv
+git fetch --all
+git checkout 3.2.0
+
+mkdir build
+cd build
+
+
+cmake -DCMAKE_BUILD_TYPE=RELEASE \
+      -DCMAKE_INSTALL_PREFIX=$RESEARCH_ROOT/local \
+      -DPYTHON2_PACKAGES_PATH=$RESEARCH_ROOT/local/lib/python2.7/site-packages \
+      -DPYTHON2_LIBRARY=$PYTHON_LIBRARY_DIR \
+      -DPYTHON2_INCLUDE_DIR=$PYTHON_INCLUDE_DIR \
+      -DOPENCV_EXTRA_MODULES_PATH=$RESEARCH_ROOT/packages/opencv/opencv_contrib/modules \
+      -DWITH_VTK=OFF \
+      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+      -DBUILD_opencv_contrib_world=OFF \
+      -DBUILD_opencv_world=OFF \
+      -DWITH_CUBLAS=ON \
+      -DWITH_GDAL=ON \
+      -DWITH_TBB=ON \
+      -DWITH_V4L=ON \
+      -DWITH_QT=OFF \
+      -DWITH_OPENGL=ON \
+      -DWITH_CUBLAS=ON \
+      -DWITH_LAPACK=OFF \
+      -DCUDA_NVCC_FLAGS="-D_FORCE_INLINES" \
+      ..
+
+make -j4 install
+
+popd
