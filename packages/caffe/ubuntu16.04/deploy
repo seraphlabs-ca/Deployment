@@ -9,11 +9,11 @@ echo "\n\nDeploying caffe: ${caffe_name}"
 pushd
 
 # install dependencies
-sudo apt-get install \
+sudo apt-get install --assume-yes \
       libleveldb-dev \
       libsnappy-dev \
       libhdf5-serial-dev
-sudo apt-get install --no-install-recommends \
+sudo apt-get install --assume-yes --no-install-recommends \
       libboost-all-dev
 
 
