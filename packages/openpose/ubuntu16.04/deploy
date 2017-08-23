@@ -9,14 +9,13 @@ echo "\n\nDeploying caffe: ${caffe_name}"
 pushd
 
 # install dependencies
-sudo port install \
-    snappy \
-    leveldb \
-    gflags \
-    google-glog \
-    szip \
-    lmdb \
-    hdf5
+sudo apt-get install --assume-yes \
+      libleveldb-dev \
+      libsnappy-dev \
+      libhdf5-serial-dev
+sudo apt-get install --assume-yes --no-install-recommends \
+      libboost-all-dev
+
 
 # clone repositories
 mkdir -p ${RESEARCH_ROOT}/packages/cnn
@@ -27,7 +26,6 @@ cd caffe
 
 # copy config file
 cp ${script_path}/Makefile.config ./
-cp ${script_path}/Makefile ./
 
 # build caffe
 make clean
