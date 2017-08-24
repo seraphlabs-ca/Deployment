@@ -2,7 +2,7 @@
 
 script_path=${0:A:h}
 
-caffe_name="caffe-with-opencv"
+caffe_name="caffe-with-opencv-cuda7.5"
 
 echo "\n\nDeploying caffe: ${caffe_name}"
 

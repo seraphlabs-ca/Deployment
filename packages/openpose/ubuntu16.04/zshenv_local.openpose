@@ -1,5 +1,17 @@
-# add openpose paths
-export OPENPOSE_HOME=$RESEARCH_ROOT/packages/dist/openpose
+# Add CUDA 8.0 paths
+# export CUDA_HOME=/usr/local/cuda
+# export CUDA_ROOT=$CUDA_HOME
+# export DYLD_FALLBACK_LIBRARY_PATH=$CUDA_HOME/lib64:${DYLD_FALLBACK_LIBRARY_PATH}
+# export PATH=$CUDA_ROOT/bin:$PATH
 
+# Add CUDA 7.5 paths
+export CUDA_HOME=/usr/
+export CUDA_ROOT=$CUDA_HOME
+export DYLD_FALLBACK_LIBRARY_PATH=$CUDA_HOME/lib/nvidia-375:${DYLD_FALLBACK_LIBRARY_PATH}
+export PATH=$CUDA_ROOT/bin:$PATH
+
+
+# Add openpose paths
+export OPENPOSE_HOME=$RESEARCH_ROOT/packages/dist/openpose-default
 export DYLD_FALLBACK_LIBRARY_PATH=$OPENPOSE_HOME/lib:${DYLD_FALLBACK_LIBRARY_PATH}
 
