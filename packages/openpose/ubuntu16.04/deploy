@@ -13,7 +13,7 @@ mkdir -p ${RESEARCH_ROOT}/packages/cnn
 cd ${RESEARCH_ROOT}/packages/cnn
 
 git clone --recursive https://github.com/CMU-Perceptual-Computing-Lab/openpose
-cd caffe
+cd openpose
 
 # copy config file
 cp ${script_path}/Makefile.config ./
