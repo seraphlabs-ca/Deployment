@@ -39,3 +39,6 @@ cd ${RESEARCH_ROOT}/packages/dist
 ln -f -n -s -v ${caffe_name} caffe-default
 
 popd
+
+# deploy config
+config-deploy ${script_path}/../../.. caffe

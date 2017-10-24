@@ -1,0 +1,5 @@
+# Add openpose paths
+
+export OPENPOSE_HOME=$RESEARCH_ROOT/packages/dist/openpose-default
+export DYLD_FALLBACK_LIBRARY_PATH=$OPENPOSE_HOME/lib:${DYLD_FALLBACK_LIBRARY_PATH}
+

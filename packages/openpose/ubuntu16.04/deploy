@@ -1,4 +1,5 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env 
+
 
 script_path=${0:A:h}
 
@@ -17,7 +18,6 @@ cd openpose
 
 # copy config file
 cp ${script_path}/Makefile.config ./
-cp ${script_path}/zshenv_local.openpose ~/.zshenv_local.openpose
 
 # build caffe
 make clean
@@ -31,3 +31,6 @@ cd ${RESEARCH_ROOT}/packages/dist
 ln -f -n -s -v ${openpose_name} openpose-default
 
 popd
+
+# deploy config
+config-deploy ${script_path}/../../.. openpose

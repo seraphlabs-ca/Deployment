@@ -1,0 +1,6 @@
+# Add caffe paths
+export CAFFE_HOME=$RESEARCH_ROOT/packages/dist/caffe-default
+
+export DYLD_FALLBACK_LIBRARY_PATH=$CAFFE_HOME/lib:${DYLD_FALLBACK_LIBRARY_PATH}
+export PATH=$CAFFE_HOME/bin:${PATH}
+export PYTHONPATH=$CAFFE_HOME/python:${PYTHONPATH}
