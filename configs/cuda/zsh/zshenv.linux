@@ -1,0 +1,5 @@
+# Add cuda paths for linux
+export CUDA_HOME=/usr/local/cuda
+
+export DYLD_FALLBACK_LIBRARY_PATH=$CUDA_HOME/lib64:${DYLD_FALLBACK_LIBRARY_PATH}
+export PATH=$CUDA_HOME/bin:${PATH}
