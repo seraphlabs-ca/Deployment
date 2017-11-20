@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+script_path=${0:A:h}
+
+
+# download sources
+
+mkdir -p ${RESEARCH_ROOT}/packages/cmake
+pushd ${RESEARCH_ROOT}/packages/cmake
+
+wget https://cmake.org/files/v3.10/cmake-3.10.0-rc5.tar.gz
+tar xvf cmake-3.10.0-rc5.tar.gz
+cd cmake-3.10.0-rc5
+
+# build cmake and install in local research path.
+./configure --prefix=$RESEARCH_PREFIX
+make -j4 install
+
+popd
