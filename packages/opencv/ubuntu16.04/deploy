@@ -46,6 +46,6 @@ cmake \
       -DCUDA_NVCC_FLAGS="-D_FORCE_INLINES" \
       ..
 
-make -j4 install
+make -j`get-cpu-num` install
 
 popd
