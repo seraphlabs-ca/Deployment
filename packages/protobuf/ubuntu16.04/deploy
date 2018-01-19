@@ -37,7 +37,7 @@ echo "\n\nInstalling protobuf to ${target_dir}"
 # Follow instructions in src/README.md
 # To install locally use (without root permissions)
 ./autogen.sh
-./configure --prefix=${target_dir}
+./configure --prefix=${target_dir} "CFLAGS=-fPIC" "CXXFLAGS=-fPIC"
 make -j8 install
 
 # Install Protobuf Python
