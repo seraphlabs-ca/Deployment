@@ -3,7 +3,7 @@
 script_path=${0:A:h}
 
 
-opencv_branch="3.2.0"
+opencv_branch="3.4.1"
 
 echo "\n\nDeploying Open CV branch ${opencv_branch}"
 

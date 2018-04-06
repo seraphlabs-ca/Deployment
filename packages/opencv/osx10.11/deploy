@@ -3,7 +3,7 @@
 script_path=${0:A:h}
 
 
-opencv_branch="3.2.0"
+opencv_branch="3.4.1"
 
 echo "\n\nDeploying Open CV branch ${opencv_branch}"
 
@@ -17,16 +17,16 @@ cd ${RESEARCH_ROOT}/packages/opencv
 git clone --recursive https://github.com/Itseez/opencv.git
 git clone --recursive https://github.com/Itseez/opencv_contrib
 
-# build opencv 3.2
+# build opencv ${opencv_branch}
 cd ${RESEARCH_ROOT}/packages/opencv/opencv_contrib
 git fetch --all
-git checkout 3.2.0
+git checkout ${opencv_branch}
 
 cd ${RESEARCH_ROOT}/packages/opencv/opencv
 git fetch --all
-git checkout 3.2.0
+git checkout ${opencv_branch}
 
-mkdir build
+mkdir -p build
 cd build
 
 
